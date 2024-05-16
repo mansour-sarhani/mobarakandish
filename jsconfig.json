@@ -1,7 +1,19 @@
 {
-  "compilerOptions": {
-    "paths": {
-      "@/*": ["./*"]
-    }
-  }
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"@/public/*": ["public/*"],
+			"@/utils/*": ["utils/*"],
+			"@/hooks/*": ["hooks/*"],
+			"@/functions/*": ["functions/*"],
+			"@/redux/*": ["redux/*"],
+			"@/styles/*": ["styles/*"],
+			"@/components/*": ["components/*"],
+			"@/layout/*": ["components/layout/*"],
+			"@/module/*": ["components/module/*"],
+			"@/template/*": ["components/template/*"],
+			"@/form/*": ["components/form/*"],
+			"@/table/*": ["components/table/*"]
+		}
+	}
 }

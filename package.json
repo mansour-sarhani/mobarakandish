@@ -1,16 +1,25 @@
 {
-  "name": "mobarak-andish",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "react": "^18",
-    "react-dom": "^18",
-    "next": "14.2.3"
-  }
+	"name": "mobarak-andish",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint"
+	},
+	"dependencies": {
+		"@emotion/cache": "^11.11.0",
+		"@emotion/react": "^11.11.4",
+		"@emotion/styled": "^11.11.5",
+		"@mui/icons-material": "^5.15.17",
+		"@mui/material": "^5.15.17",
+		"@mui/material-nextjs": "^5.15.11",
+		"embla-carousel-autoplay": "^8.0.4",
+		"embla-carousel-react": "^8.0.4",
+		"framer-motion": "^11.1.9",
+		"next": "14.2.3",
+		"react": "^18",
+		"react-dom": "^18"
+	}
 }
