@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import HomeIcon from "@mui/icons-material/Home";
 
-export default function MainMenu() {
+export default function HomeMenu() {
 	const [activeMenu, setActiveMenu] = useState("#home");
 
 	const handleClick = (e, href) => {
@@ -62,8 +63,8 @@ export default function MainMenu() {
 	}, [sections]);
 
 	return (
-		<div className="main-menu">
-			<nav aria-label="Main Menu" className="menu-nav">
+		<div className="header-menu home-menu">
+			<nav aria-label="Home Menu" className="menu-nav">
 				<ul className="menu-list">
 					<li
 						className={`menu-item ${
@@ -74,7 +75,13 @@ export default function MainMenu() {
 							href="#home"
 							onClick={(e) => handleClick(e, "#home")}
 							className="menu-link"
+							style={{
+								display: "flex",
+								alignItems: "center",
+								gap: "5px",
+							}}
 						>
+							<HomeIcon />
 							خانه
 						</a>
 					</li>
@@ -101,7 +108,7 @@ export default function MainMenu() {
 							onClick={(e) => handleClick(e, "#fields")}
 							className="menu-link"
 						>
-							حوزه های تخصصی
+							حوزه های فعالیت
 						</a>
 					</li>
 					<li
@@ -114,7 +121,7 @@ export default function MainMenu() {
 							onClick={(e) => handleClick(e, "#services")}
 							className="menu-link"
 						>
-							خدمات ما
+							خدمات تخصصی
 						</a>
 					</li>
 					<li

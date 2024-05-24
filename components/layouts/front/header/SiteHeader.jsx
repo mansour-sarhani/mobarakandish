@@ -1,24 +1,37 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Logo from "@/components/modules/Logo";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import MainMenu from "@/components/modules/MainMenu";
+import Logo from "@/components/modules/common/Logo";
+import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+import Link from "next/link";
+import HomeMenu from "./HomeMenu";
+import FrontMenu from "./FrontMenu";
+import DarkAndLightMode from "@/components/modules/common/DarkAndLightMode";
 
-export default function Header() {
+export default function SiteHeader({ url }) {
 	const [isSticky, setSticky] = useState(false);
+	const [isHome, setIsHome] = useState(true);
 
 	const checkScroll = () => {
-		if (window.pageYOffset > 0) {
+		if (window.scrollY > 0) {
 			setSticky(true);
 		} else {
 			setSticky(false);
 		}
 	};
+
+	useEffect(() => {
+		if (url !== "/") {
+			setIsHome(false);
+		} else {
+			setIsHome(true);
+		}
+	}, [url]);
 
 	useEffect(() => {
 		window.addEventListener("scroll", checkScroll);
@@ -29,18 +42,13 @@ export default function Header() {
 	}, []);
 
 	return (
-		<Box id="home">
+		<header id="header">
 			<Box
-				className={`header ${isSticky ? "sticky-header" : ""}`}
-				sx={{
-					width: "100%",
-					height: "100px",
-					display: "flex",
-					alignItems: "center",
-					backgroundColor: "#13263c",
-				}}
+				className={`site-header ${
+					isHome ? "home-header" : "front-header"
+				} ${isSticky ? "sticky-header" : ""}`}
 			>
-				<Container sx={{}}>
+				<Container>
 					<Grid
 						container
 						spacing={3}
@@ -56,7 +64,9 @@ export default function Header() {
 								justifyContent: "flex-start",
 							}}
 						>
-							<Logo />
+							<Link href={"/"}>
+								<Logo />
+							</Link>
 						</Grid>
 
 						<Grid
@@ -67,7 +77,11 @@ export default function Header() {
 								justifyContent: "center",
 							}}
 						>
-							<MainMenu />
+							{isHome ? (
+								<HomeMenu />
+							) : (
+								<FrontMenu currentUrl={url} />
+							)}
 						</Grid>
 
 						<Grid
@@ -79,35 +93,18 @@ export default function Header() {
 							}}
 						>
 							<Button
-								variant="contained"
+								variant={isSticky ? "contained" : "outlined"}
 								color="primary"
-								startIcon={<AccountCircleIcon />}
+								endIcon={<LocalPhoneIcon />}
 							>
-								پنل کاربری
+								<a href="tel:00982166436841">66436841 – 021</a>
 							</Button>
+
+							<DarkAndLightMode />
 						</Grid>
 					</Grid>
 				</Container>
 			</Box>
-
-			<Box
-				className="header-curve"
-				sx={{
-					backgroundColor: "#ffffff",
-					height: "70px",
-				}}
-			>
-				<svg
-					viewBox="15 12 1470 48"
-					fill="none"
-					xmlns="http://www.w3.org/2000/svg"
-				>
-					<path
-						d="M0 11C3.93573 11.3356 7.85984 11.6689 11.7725 12H1488.16C1492.1 11.6689 1496.04 11.3356 1500 11V12H1488.16C913.668 60.3476 586.282 60.6117 11.7725 12H0V11Z"
-						fill="#13263c"
-					></path>
-				</svg>
-			</Box>
-		</Box>
+		</header>
 	);
 }

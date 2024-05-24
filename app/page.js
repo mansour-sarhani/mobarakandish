@@ -1,18 +1,18 @@
 import Box from "@mui/material/Box";
-import HomeAbout from "@/components/modules/HomeAbout";
-import HomeFields from "@/components/modules/HomeFields";
-import HomeSlider from "@/components/modules/HomeSlider";
-import HomeServices from "@/components/modules/HomeServices";
-import HomeContact from "@/components/modules/HomeContact";
+import HomeIntro from "@/components/modules/Home/HomeIntro";
+import HomeAbout from "@/components/modules/Home/HomeAbout";
+import HomeFields from "@/components/modules/Home/HomeFields";
+import HomeServices from "@/components/modules/Home/HomeServices";
+import ContactSection from "@/components/modules/common/ContactSection";
 
 export default function Home() {
 	return (
 		<Box className="home-wrapper">
-			<HomeSlider />
+			<HomeIntro />
 			<HomeAbout />
 			<HomeFields />
 			<HomeServices />
-			<HomeContact />
+			<ContactSection />
 		</Box>
 	);
 }

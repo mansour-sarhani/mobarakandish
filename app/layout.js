@@ -1,12 +1,11 @@
-import "./globals.css";
-import "./fonts.css";
-import "../styles/SliderStyles.css";
+import "../styles/globals.css";
+import "../styles/fonts.css";
+import "../styles/dark.css";
+import "../styles/rtl.css";
 
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./theme";
-
-import Header from "@/components/layouts/front/Header";
 
 export const metadata = {
 	title: "مبارک اندیش",
@@ -18,10 +17,7 @@ export default function RootLayout({ children }) {
 		<html lang="fa">
 			<body>
 				<AppRouterCacheProvider>
-					<ThemeProvider theme={theme}>
-						<Header />
-						{children}
-					</ThemeProvider>
+					<ThemeProvider theme={theme}>{children}</ThemeProvider>
 				</AppRouterCacheProvider>
 			</body>
 		</html>

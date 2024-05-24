@@ -10,21 +10,12 @@ import Container from "@mui/material/Container";
 import PhoneEnabledIcon from "@mui/icons-material/PhoneEnabled";
 import EmailIcon from "@mui/icons-material/Email";
 
-export default function HomeContact() {
+export default function ContactSection() {
 	return (
 		<Box id="contact">
 			<div className="contact-image"></div>
 			<Container>
-				<Box
-					className="contact-content"
-					sx={{
-						height: "514px",
-						display: "flex",
-						flexDirection: "column",
-						justifyContent: "center",
-						alignItems: "start",
-					}}
-				>
+				<Box className="contact-content">
 					<Typography
 						variant="h3"
 						gutterBottom

@@ -2,21 +2,17 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Image from "next/image";
+import SectionHeader from "../common/SectionHeader";
 
 export default function HomeAbout() {
 	return (
-		<Box sx={{ padding: "50px 0", position: "relative" }} id="about">
-			<div className="mask-overlay"></div>
+		<Box id="about">
+			<div className="right-overlay-pattern"></div>
 			<Container>
 				<Box>
-					<Typography
-						variant="h2"
-						gutterBottom
-						textAlign="center"
-						color="primary"
-					>
+					<SectionHeader variant="h2">
 						درباره مبارک اندیش
-					</Typography>
+					</SectionHeader>
 
 					<Typography
 						variant="body1"
@@ -37,6 +33,7 @@ export default function HomeAbout() {
 						variant="body1"
 						gutterBottom
 						textAlign="justify"
+						marginBottom={2}
 					>
 						در حال حاضر این گروه، تولید کننده و تأمین کننده اسپرم و
 						جنین نژادهای مختلف گاوهای شیری و گوشتی، اسپرم و جنین
@@ -46,15 +43,9 @@ export default function HomeAbout() {
 						مصنوعی می باشد.
 					</Typography>
 
-					<Typography
-						variant="h4"
-						gutterBottom
-						textAlign="center"
-						sx={{ marginTop: "20px" }}
-						color="primary"
-					>
+					<SectionHeader variant="h4">
 						منشور گروه مبارک اندیش
-					</Typography>
+					</SectionHeader>
 
 					<Typography
 						variant="body1"
