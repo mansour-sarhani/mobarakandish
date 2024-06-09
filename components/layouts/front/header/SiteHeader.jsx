@@ -12,6 +12,7 @@ import Link from "next/link";
 import HomeMenu from "./HomeMenu";
 import FrontMenu from "./FrontMenu";
 import DarkAndLightMode from "@/components/modules/common/DarkAndLightMode";
+import LanguageBtn from "@/components/modules/common/LanguageBtn";
 
 export default function SiteHeader({ url }) {
 	const [isSticky, setSticky] = useState(false);
@@ -101,6 +102,8 @@ export default function SiteHeader({ url }) {
 							</Button>
 
 							<DarkAndLightMode />
+
+							<LanguageBtn />
 						</Grid>
 					</Grid>
 				</Container>

@@ -5,41 +5,48 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import { IconButton, Tooltip } from "@mui/material";
 import { toggleTheme } from "@/redux/features/publicSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const DarkAndLightMode = () => {
-	const [isDarkMode, setIsDarkMode] = useState(false);
+	const [currentTheme, setCurrentTheme] = useState(() => {
+		if (typeof window !== "undefined" && window.localStorage) {
+			const savedTheme = localStorage.getItem("theme");
+			if (savedTheme) {
+				return savedTheme;
+			}
+		}
+		return "light";
+	});
 
+	const theme = useSelector((state) => state.public.theme);
 	const dispatch = useDispatch();
 
-	useEffect(() => {
-		const storedPreference = localStorage.getItem("theme");
-		if (storedPreference === "dark") {
-			setIsDarkMode(true);
-		}
-	}, []);
-
 	const handleToggle = () => {
-		setIsDarkMode(!isDarkMode);
-		dispatch(toggleTheme(!isDarkMode));
+		const newTheme = currentTheme === "light" ? "dark" : "light";
+		setCurrentTheme(newTheme);
+		localStorage.setItem("theme", newTheme);
 	};
 
 	useEffect(() => {
-		localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+		if (currentTheme !== theme) {
+			dispatch(toggleTheme({ theme: currentTheme }));
+		}
+	}, [currentTheme, theme]);
 
+	useEffect(() => {
 		const htmlElement = document.querySelector("html");
-		if (isDarkMode) {
+		if (theme === "dark") {
 			htmlElement.classList.add("dark");
 		} else {
 			htmlElement.classList.remove("dark");
 		}
-	}, [isDarkMode]);
+	}, [theme]);
 
 	return (
 		<div className="dark-mode-btn">
-			<Tooltip title={`حالت ${isDarkMode ? "روز" : "شب"}`}>
+			<Tooltip title={`حالت ${theme === "dark" ? "روز" : "شب"}`}>
 				<IconButton onClick={handleToggle} size="small">
-					{isDarkMode ? <LightModeIcon /> : <DarkModeIcon />}
+					{theme === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
 				</IconButton>
 			</Tooltip>
 		</div>

@@ -2,13 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import FrontFooter from "@/components/layouts/front/footer/FrontFooter";
-
 import { Provider } from "react-redux";
 import store from "../redux/store";
+import FrontFooter from "@/components/layouts/front/footer/FrontFooter";
 import SiteHeader from "@/components/layouts/front/header/SiteHeader";
 
-export default function Template({ children }) {
+export default function RootTemplate({ children }) {
 	const [url, setUrl] = useState("/");
 
 	const pathname = usePathname();

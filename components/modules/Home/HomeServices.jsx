@@ -15,7 +15,7 @@ export default function HomeServices() {
 
 			<Box className="service-block block-rtl">
 				<Grid container spacing={3}>
-					<Grid item xs={12} md={5}>
+					<Grid item xs={12} md={6}>
 						<Box className="service-content">
 							<Typography
 								variant="h3"
@@ -70,7 +70,7 @@ export default function HomeServices() {
 						</Box>
 					</Grid>
 
-					<Grid item xs={12} md={7}>
+					<Grid item xs={12} md={6}>
 						<Box className="service-visual">
 							<div className="service-overlay service-overlay-left"></div>
 							<Box className="service-main-image">
@@ -88,7 +88,7 @@ export default function HomeServices() {
 
 			<Box className="service-block block-ltr">
 				<Grid container spacing={3}>
-					<Grid item xs={12} md={7}>
+					<Grid item xs={12} md={6}>
 						<Box className="service-visual">
 							<div className="service-overlay service-overlay-right"></div>
 							<Box className="service-main-image">
@@ -102,7 +102,7 @@ export default function HomeServices() {
 						</Box>
 					</Grid>
 
-					<Grid item xs={12} md={5}>
+					<Grid item xs={12} md={6}>
 						<Box className="service-content">
 							<Typography
 								variant="h3"
@@ -134,7 +134,6 @@ export default function HomeServices() {
 									variant="contained"
 									color="primary"
 									startIcon={<InfoIcon />}
-									sx={{ marginLeft: "48px !important" }}
 								>
 									بیشتر بخوانید
 								</Button>

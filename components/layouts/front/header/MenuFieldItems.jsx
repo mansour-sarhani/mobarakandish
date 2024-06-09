@@ -7,7 +7,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function MenuFieldItems({ toggleDrawer, anchor, currentUrl }) {
-	console.log(currentUrl);
 	return (
 		<Box
 			className="menu-field-items-wrapper"

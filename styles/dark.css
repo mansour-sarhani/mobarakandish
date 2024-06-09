@@ -352,6 +352,10 @@
 	background-color: var(--cardBg);
 }
 
+.dark .MuiCheckbox-root {
+    color: rgb(255 255 255 / 60%);
+}
+
 [class="leftSidebarDark dark"] .sidebarLinkActive span {
 	color: #f3f3f3;
 } /*# sourceMappingURL=dark.css.map */
