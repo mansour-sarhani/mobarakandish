@@ -103,7 +103,7 @@ export default function SiteHeader({ url }) {
 
 							<DarkAndLightMode />
 
-							<LanguageBtn />
+							{/* <LanguageBtn /> */}
 						</Grid>
 					</Grid>
 				</Container>

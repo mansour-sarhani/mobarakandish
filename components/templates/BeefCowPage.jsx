@@ -12,7 +12,7 @@ import ModalBtn from "@/components/modules/common/ModalBtn";
 export default function BeefCowPage() {
 	return (
 		<Box className="inner-page-wrapper">
-			<PageBreadcrumb title={"گاو گوشتی"} type={"fields"} />
+			<PageBreadcrumb title={"گاو گوشتی"} parent={"حوزه های فعالیت"} />
 
 			<Box className="service-block block-rtl">
 				<Grid container spacing={3}>
@@ -44,9 +44,9 @@ export default function BeefCowPage() {
 							</Typography>
 
 							<div className="service-buttons-wrapper">
-                                <ModalBtn label="اسپرم گاو گوشتی" icon="table">
-                                    <CustomTable />
-                                </ModalBtn>
+								<ModalBtn label="اسپرم گاو گوشتی" icon="table">
+									<CustomTable />
+								</ModalBtn>
 
 								<Button
 									variant="contained"

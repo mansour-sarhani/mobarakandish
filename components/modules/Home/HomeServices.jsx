@@ -5,6 +5,7 @@ import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import InfoIcon from "@mui/icons-material/Info";
 import FormatListNumberedRtlIcon from "@mui/icons-material/FormatListNumberedRtl";
+import TableViewIcon from "@mui/icons-material/TableView";
 import Link from "next/link";
 import SectionHeader from "../common/SectionHeader";
 
@@ -54,17 +55,21 @@ export default function HomeServices() {
 								<Button
 									variant="contained"
 									color="primary"
-									startIcon={<FormatListNumberedRtlIcon />}
+									startIcon={<TableViewIcon />}
 								>
-									<Link href={"/"}>اسپرم گاو گوشتی</Link>
+									<Link href={"/milk-cow/sperms-list"}>
+										لیست اسپرم گاو گوشتی
+									</Link>
 								</Button>
 
 								<Button
 									variant="contained"
 									color="primary"
-									startIcon={<FormatListNumberedRtlIcon />}
+									startIcon={<TableViewIcon />}
 								>
-									<Link href={"/"}>اسپرم گاو شیری</Link>
+									<Link href={"/milk-cow/sperms-list"}>
+										لیست اسپرم گاو شیری
+									</Link>
 								</Button>
 							</div>
 						</Box>

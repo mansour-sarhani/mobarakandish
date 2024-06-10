@@ -1,7 +1,7 @@
 import BeefCowPage from "@/components/templates/BeefCowPage";
 
 export const metadata = {
-	title: "گاو گوشتی",
+	title: "گاو گوشتی | مبارک اندیش",
 };
 
 export default function BeefCow() {

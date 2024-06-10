@@ -3,13 +3,11 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
-import ToTopCurve from "@/components/modules/common/ToTopCurve";
 
 export default function FrontFooter() {
 	return (
 		<div id="footer">
 			<Box className="footer-bg">
-				<ToTopCurve />
 				<Box className="footer-wrapper">
 					<Container>
 						<Grid container spacing={5}>

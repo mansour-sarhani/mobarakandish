@@ -167,6 +167,7 @@ a {
 /* GLOBAL */
 /* GLOBAL */
 .curve {
+	max-width: 100%;
 	height: 70px;
 }
 
@@ -459,6 +460,28 @@ a {
 	color: var(--white-color);
 }
 
+.inner-page-wrapper {
+	width: 100%;
+	margin-bottom: 50px;
+}
+
+.loading-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 999;
+}
+
+.loading-progress {
+	color: white;
+}
+
 /* HOME PAGE */
 /* HOME PAGE */
 /* HOME PAGE */
@@ -642,9 +665,14 @@ a {
 }
 
 .beef-sperm-grid {
-    display: grid;
-    grid-template-columns: repeat(8, minmax(0, 1fr));
-    gap: 10px 30px;
+	display: grid;
+	grid-template-columns: repeat(11, minmax(0, 1fr));
+	gap: 5px 10px;
+}
+
+.beef-sperm-grid label .MuiTypography-body1 {
+	font-size: 14px;
+	font-family: "Roboto";
 }
 
 /* FOOTER */
@@ -652,8 +680,6 @@ a {
 /* FOOTER */
 .footer-bg {
 	width: 100%;
-	height: 500px;
-	min-height: 500px;
 	position: relative;
 	background-image: url("/images/footer-bg-1.webp");
 	background-position: center center;
@@ -665,7 +691,7 @@ a {
 	width: 100%;
 	display: flex;
 	align-items: center;
-	padding: 70px 0 20px;
+	padding: 50px 0 30px;
 }
 
 .footer-widget {

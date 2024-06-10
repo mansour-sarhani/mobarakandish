@@ -4,13 +4,14 @@ import Image from "next/image";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import FormatListNumberedRtlIcon from "@mui/icons-material/FormatListNumberedRtl";
+import TableViewIcon from "@mui/icons-material/TableView";
 import Link from "next/link";
 import PageBreadcrumb from "@/components/modules/common/PageBreadcrumb";
 
 export default function MilkCowPage() {
 	return (
 		<Box className="inner-page-wrapper">
-			<PageBreadcrumb title={"گاو شیری"} type={"fields"} />
+			<PageBreadcrumb title={"گاو شیری"} parent={"حوزه های فعالیت"} />
 
 			<Box className="service-block block-rtl">
 				<Grid container spacing={3}>
@@ -45,18 +46,20 @@ export default function MilkCowPage() {
 								<Button
 									variant="contained"
 									color="primary"
-									startIcon={<FormatListNumberedRtlIcon />}
+									startIcon={<TableViewIcon />}
 								>
-									<Link href={"/"}>اسپرم گاو گوشتی</Link>
+									<Link href={"/milk-cow/sperms-list"}>
+										لیست اسپرم گاو شیری
+									</Link>
 								</Button>
 
-								<Button
+								{/* <Button
 									variant="contained"
 									color="primary"
 									startIcon={<FormatListNumberedRtlIcon />}
 								>
 									<Link href={"/"}>اسپرم گاو شیری</Link>
-								</Button>
+								</Button> */}
 							</div>
 						</Box>
 					</Grid>

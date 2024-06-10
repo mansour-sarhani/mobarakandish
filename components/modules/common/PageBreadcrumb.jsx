@@ -4,7 +4,7 @@ import Image from "next/image";
 import Container from "@mui/material/Container";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 
-export default function PageBreadcrumb({ title, type }) {
+export default function PageBreadcrumb({ title, parent }) {
 	return (
 		<Box className="breadcrumb-wrapper">
 			<Image
@@ -27,9 +27,7 @@ export default function PageBreadcrumb({ title, type }) {
 							color="#fff"
 						>
 							<Typography color="#fff" fontSize="0.9rem">
-								{type === "fields"
-									? "حوزه های فعالیت"
-									: "خدمات تخصصی"}
+								{parent}
 							</Typography>
 							<Typography
 								color="secondary"

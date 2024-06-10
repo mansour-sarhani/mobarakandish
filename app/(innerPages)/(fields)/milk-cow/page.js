@@ -1,7 +1,7 @@
 import MilkCowPage from "@/components/templates/MilkCowPage";
 
 export const metadata = {
-	title: "گاو شیری",
+	title: "گاو شیری | مبارک اندیش",
 };
 
 export default function MilkCow() {
