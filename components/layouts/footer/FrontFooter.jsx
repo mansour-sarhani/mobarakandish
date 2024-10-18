@@ -13,14 +13,12 @@ export default function FrontFooter() {
 						<Grid container spacing={5}>
 							<Grid item xs={12} md={4}>
 								<Box className="footer-widget">
-									<Typography variant="h6" color="primary">
+									<Typography variant="h6">
 										درباره مبارک اندیش
 									</Typography>
 									<Typography
 										variant="body2"
-										color="#fff"
 										textAlign="justify"
-										sx={{ opacity: "0.7" }}
 									>
 										گروه مبارک اندیش فعالیت خود را از سال
 										۱۳۷۷ آغاز نموده است و با اتکا به خداوند
@@ -39,7 +37,7 @@ export default function FrontFooter() {
 
 							<Grid item xs={12} md={4}>
 								<Box className="footer-widget">
-									<Typography variant="h6" color="primary">
+									<Typography variant="h6">
 										دسترسی سریع
 									</Typography>
 									<ul className="footer-menu">
@@ -79,7 +77,7 @@ export default function FrontFooter() {
 
 							<Grid item xs={12} md={4}>
 								<Box className="footer-widget">
-									<Typography variant="h6" color="primary">
+									<Typography variant="h6">
 										لینک های مفید
 									</Typography>
 									<ul className="footer-menu">
@@ -118,12 +116,7 @@ export default function FrontFooter() {
 							</Grid>
 						</Grid>
 						<Box className="footer-copyright">
-							<Typography
-								variant="body2"
-								color="#fff"
-								fontSize="12px"
-								sx={{ opacity: "0.7" }}
-							>
+							<Typography variant="body2">
 								تمامی حقوق مادی و معنوی این وبسایت برای گروه
 								مبارک اندیش محفوط می باشد.
 							</Typography>

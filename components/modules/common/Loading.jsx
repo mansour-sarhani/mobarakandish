@@ -1,11 +1,18 @@
-import CircularProgress from "@mui/material/CircularProgress";
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 
-function Loading() {
-	return (
-		<div className="loading-overlay">
-			<CircularProgress className="loading-progress" />
-		</div>
-	);
+export default function Loading({ isLoading }) {
+    if (isLoading) {
+        return (
+            <Backdrop
+                sx={{
+                    color: '#fff',
+                    zIndex: (theme) => theme.zIndex.drawer + 1,
+                }}
+                open={isLoading}
+            >
+                <CircularProgress color="inherit" />
+            </Backdrop>
+        );
+    }
 }
-
-export default Loading;

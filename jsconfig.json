@@ -5,6 +5,7 @@
 			"@/public/*": ["public/*"],
 			"@/utils/*": ["utils/*"],
 			"@/hooks/*": ["hooks/*"],
+			"@/providers/*": ["providers/*"],
 			"@/functions/*": ["functions/*"],
 			"@/redux/*": ["redux/*"],
 			"@/styles/*": ["styles/*"],

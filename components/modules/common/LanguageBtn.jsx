@@ -35,7 +35,7 @@ const LanguageBtn = () => {
 	}, [lang]);
 
 	return (
-		<div className="language-btn">
+		<div className="header-btn">
 			<Tooltip title={lang === "fa" ? "English" : "فارسی"}>
 				<IconButton onClick={handleToggle} size="small">
 					{lang === "fa" ? "EN" : "FA"}
