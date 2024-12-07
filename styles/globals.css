@@ -174,6 +174,18 @@ a {
     margin-left: -4px;
 }
 
+.MuiDataGrid-toolbarContainer {
+    background-color: #ccc;
+    padding: 8px !important;
+}
+
+.MuiDataGrid-toolbarContainer > .MuiButton-root {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    height: 40px;
+    width: 100px;
+}
+
 /* GLOBAL */
 /* GLOBAL */
 /* GLOBAL */
@@ -436,7 +448,7 @@ a {
 
 .intro-wrapper {
     width: 100%;
-    height: 650px;
+    height: 100%;
     display: flex;
     align-items: center;
 }
@@ -444,9 +456,9 @@ a {
 .intro-content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    margin-top: 70px;
+    height: 100%;
 }
 
 .intro-content h2 {
@@ -456,7 +468,9 @@ a {
     line-height: 1.6;
 }
 
-.intro-content button {
+.intro-btns-wrapper {
+    display: flex;
+    gap: 20px;
     margin-bottom: 60px;
 }
 
@@ -465,10 +479,6 @@ a {
     display: grid;
     grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: 80px;
-}
-
-.intro-logos-wrapper img {
-    filter: brightness(0) invert(1);
 }
 
 #about {
@@ -496,8 +506,7 @@ a {
 }
 
 .home-fields-wrapper {
-    width: 100%;
-    margin-top: 40px;
+    width: 70%;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 40px;
@@ -507,10 +516,12 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding: 0 0 15px;
     transition: var(--all-transition);
     -webkit-transition: var(--all-transition);
     -moz-transition: var(--all-transition);
+    background-color: #14253b;
+    border-radius: var(--border-radius);
 }
 
 .home-field-item:hover {
@@ -523,6 +534,7 @@ a {
     transition: var(--all-transition);
     -webkit-transition: var(--all-transition);
     -moz-transition: var(--all-transition);
+    color: var(--white-color);
 }
 
 .home-field-item:hover h4 {
@@ -779,15 +791,39 @@ a {
     min-height: 600px;
 }
 
+.inner-page-content.full-page {
+    padding: 0 30px;
+}
+
+.sperm-page-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.sperm-page-sidebar {
+    width: 100%;
+    max-width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    padding: 15px;
+    position: sticky;
+    top: 0;
+}
+
 .beef-sperm-grid {
     display: grid;
-    grid-template-columns: repeat(11, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 5px 10px;
 }
 
 .beef-sperm-grid label .MuiTypography-body1 {
     font-size: 14px;
     font-family: 'Roboto';
+}
+
+.sperm-page-table {
+    width: 100%;
 }
 
 /* FOOTER */

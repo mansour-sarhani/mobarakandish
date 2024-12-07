@@ -1,23 +1,18 @@
 'use client';
 
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import Paper from '@mui/material/Paper';
-import { styled } from '@mui/material/styles';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import { useState } from 'react';
-import Typography from '@mui/material/Typography';
+import { useEffect, useState } from 'react';
 import PageBreadcrumb from '@/components/modules/common/PageBreadcrumb';
-import { Container } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { useSnackbar } from 'notistack';
+import { DataGrid, GridToolbar, useGridApiRef } from '@mui/x-data-grid';
+import getAllDairyCowSpermsList from '@/functions/getAllDairyCowSpermsList';
+import { faIR } from '@mui/x-data-grid/locales';
+import Loading from '../modules/common/Loading';
 
 const headers = [
     {
-        id: 'naab',
+        id: 'naaB_CODE',
         label: 'NAAB',
     },
     {
@@ -37,10 +32,6 @@ const headers = [
         label: 'LNM',
     },
     {
-        id: 'lfm',
-        label: 'LFM',
-    },
-    {
         id: 'milk',
         label: 'MILK',
     },
@@ -53,7 +44,7 @@ const headers = [
         label: 'FAT',
     },
     {
-        id: 'protein',
+        id: 'pro',
         label: 'PROTEIN',
     },
     {
@@ -102,99 +93,70 @@ const headers = [
     },
     {
         id: 'price',
-        label: 'قیمت',
-    },
-].filter((header) => header.id !== 'price');
-
-const data = [
-    {
-        id: 1,
-        naab: 'Naab 1',
-        regNo: '585485',
-        breed: 'Breed one',
-        name: 'First Sperm',
-        lnm: '1.1',
-        lfm: '1.2',
-        milk: '1.3',
-        icc: '1.4',
-        fat: '1.5',
-        protein: '1.6',
-        sce: '1.7',
-        pl: '1.8',
-        dpr: '1.9',
-        ptat: '1.10',
-        udc: '1.11',
-        flc: '1.12',
-        fs: '1.13',
-        fi: '1.14',
-        tpi: '1.15',
-        sire: '1.16',
-        mgs: '1.17',
-        price: '450000',
-    },
-
-    {
-        id: 2,
-        naab: 'Naab 2',
-        regNo: '367964',
-        breed: 'Breed two',
-        name: 'Second Sperm',
-        lnm: '2.1',
-        lfm: '2.2',
-        milk: '2.3',
-        icc: '2.4',
-        fat: '2.5',
-        protein: '2.6',
-        sce: '2.7',
-        pl: '2.8',
-        dpr: '2.9',
-        ptat: '2.10',
-        udc: '2.11',
-        flc: '2.12',
-        fs: '2.13',
-        fi: '2.14',
-        tpi: '2.15',
-        sire: '2.16',
-        mgs: '2.17',
-        price: '970000',
+        label: 'قیمت (تومان)',
     },
 ];
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    [`&.${tableCellClasses.head}`]: {
-        backgroundColor: '#00a594',
-        color: theme.palette.common.white,
-        border: '1px solid #ccc',
-        padding: '3px 5px',
-    },
-    [`&.${tableCellClasses.body}`]: {
-        border: '1px solid #ccc',
-        padding: '3px 5px',
-    },
-}));
-
 export default function MilkCowSpermPage() {
-    const [checkedHeaders, setCheckedHeaders] = useState(
-        headers.map((h) => h.id)
-    );
+    const [serverData, setServerData] = useState();
 
-    const handleChange = (event) => {
-        const headerId = event.target.name;
-        if (headerId === 'price') return;
-        if (event.target.checked) {
-            setCheckedHeaders((prevHeaders) =>
-                [...prevHeaders, headerId].sort(
-                    (a, b) =>
-                        headers.findIndex((h) => h.id === a) -
-                        headers.findIndex((h) => h.id === b)
-                )
-            );
-        } else {
-            setCheckedHeaders((prevHeaders) =>
-                prevHeaders.filter((h) => h !== headerId)
+    const dispatch = useDispatch();
+    const { enqueueSnackbar } = useSnackbar();
+
+    const customFaIRLocaleText = {
+        ...faIR.components.MuiDataGrid.defaultProps.localeText,
+        filterOperatorDoesNotContain: 'شامل نمی‌شود',
+        filterOperatorDoesNotEqual: 'مساوی نیست',
+    };
+
+    const columns = headers.map((header) => ({
+        field: header.id,
+        headerName: header.label,
+        minWidth: 85,
+        align: 'right',
+        headerAlign: 'left',
+        width: window.innerWidth < 480 ? 120 : 85,
+    }));
+
+    const rows =
+        (serverData &&
+            serverData.map((item) => ({
+                id: item.id,
+                naaB_CODE: item.naaB_CODE,
+                regNo: item.regNo,
+                breed: item.breed,
+                name: item.name,
+                lnm: item.lnm,
+                lfm: item.lfm,
+                milk: item.milk,
+                icc: item.icc,
+                fat: item.fat,
+                pro: item.pro,
+                sce: item.sce,
+                pl: item.pl,
+                dpr: item.dpr,
+                ptat: item.ptat,
+                udc: item.udc,
+                flc: item.flc,
+                fs: item.fs,
+                fi: item.fi,
+                tpi: item.tpi,
+                sire: item.sire,
+                mgs: item.mgs,
+                price: item.price,
+            }))) ||
+        [];
+
+    useEffect(() => {
+        async function fetchData() {
+            await getAllDairyCowSpermsList(
+                dispatch,
+                enqueueSnackbar,
+                setServerData
             );
         }
-    };
+        fetchData();
+    }, [dispatch, enqueueSnackbar]);
 
     return (
         <div className="inner-page-wrapper">
@@ -203,94 +165,38 @@ export default function MilkCowSpermPage() {
                 parent={'گاو شیری'}
             />
 
-            <div className="inner-page-content">
-                <Container>
-                    <div sx={{ maxWidth: '100%', marginBottom: '20px' }}>
-                        <Typography variant="h5" sx={{ marginBottom: '20px' }}>
-                            برای اطلاعات بیشتر شاخص های مد نظر خود را انتخاب
-                            کنید :
-                        </Typography>
-                        <div className="beef-sperm-grid">
-                            {headers.map((header) => (
-                                <FormControlLabel
-                                    key={header.id}
-                                    control={
-                                        <Checkbox
-                                            checked={checkedHeaders.includes(
-                                                header.id
-                                            )}
-                                            onChange={handleChange}
-                                            name={header.id}
-                                            sx={{ padding: '5px' }}
-                                        />
-                                    }
-                                    label={header.label}
-                                    sx={{ marginRight: 0 }}
+            <div className="inner-page-content full-page">
+                <div className="sperm-page-container">
+                    <div className="sperm-page-table">
+                        <Paper sx={{ maxWidth: '100%' }}>
+                            {serverData ? (
+                                <DataGrid
+                                    rows={rows}
+                                    columns={columns}
+                                    initialState={{
+                                        pagination: {
+                                            paginationModel: {
+                                                pageSize: 10,
+                                            },
+                                        },
+                                    }}
+                                    slots={{
+                                        toolbar: GridToolbar,
+                                    }}
+                                    pageSizeOptions={[10]}
+                                    localeText={customFaIRLocaleText}
+                                    autosizeOptions={{
+                                        includeOutliers: true,
+                                        includeHeaders: true,
+                                    }}
+                                    disableRowSelectionOnClick
                                 />
-                            ))}
-                        </div>
+                            ) : (
+                                <Loading isLoading={true} />
+                            )}
+                        </Paper>
                     </div>
-                    <Paper sx={{ maxWidth: '100%' }}>
-                        <TableContainer>
-                            <Table
-                                sx={{ width: '100%' }}
-                                aria-label="Beef Cow Sperm"
-                                size="small"
-                            >
-                                <TableHead>
-                                    <TableRow>
-                                        {checkedHeaders.map(
-                                            (headerId, index) => (
-                                                <StyledTableCell
-                                                    key={index + headers.length}
-                                                    align="center"
-                                                >
-                                                    {
-                                                        headers.find(
-                                                            (header) =>
-                                                                header.id ===
-                                                                headerId
-                                                        ).label
-                                                    }
-                                                </StyledTableCell>
-                                            )
-                                        )}
-                                        <StyledTableCell align="center">
-                                            قیمت
-                                        </StyledTableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {data.map((row) => (
-                                        <TableRow
-                                            hover
-                                            key={row.id}
-                                            tabIndex={-1}
-                                            sx={{ cursor: 'pointer' }}
-                                        >
-                                            {checkedHeaders.map(
-                                                (headerId, index) => (
-                                                    <StyledTableCell
-                                                        key={
-                                                            index +
-                                                            headers.length
-                                                        }
-                                                        align="center"
-                                                    >
-                                                        {row[headerId]}
-                                                    </StyledTableCell>
-                                                )
-                                            )}
-                                            <StyledTableCell align="center">
-                                                {row.price}
-                                            </StyledTableCell>
-                                        </TableRow>
-                                    ))}
-                                </TableBody>
-                            </Table>
-                        </TableContainer>
-                    </Paper>
-                </Container>
+                </div>
             </div>
         </div>
     );

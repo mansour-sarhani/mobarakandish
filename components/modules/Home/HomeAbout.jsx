@@ -24,7 +24,7 @@ export default function HomeAbout() {
                         کشور عزیزمان ایران ایجاد نماید.
                     </Typography>
 
-                    <Typography variant="body1" gutterBottom>
+                    <Typography variant="body1" marginBottom={2}>
                         در حال حاضر این گروه، تولید کننده و تأمین کننده اسپرم و
                         جنین نژادهای مختلف گاوهای شیری و گوشتی، اسپرم و جنین
                         نژادهای مختلف گوسفند و بز، جوجه یکروزه مادر و پدر گوشتی،
@@ -37,21 +37,51 @@ export default function HomeAbout() {
                         منشور گروه مبارک اندیش
                     </SectionHeader>
 
-                    <Typography variant="body1" gutterBottom>
+                    <Typography variant="body1" marginBottom={2}>
                         تولید و تامین مواد ژنتیکی ممتاز، با استفاده از دانش روز
                         و نوآوری جهت ارتقای کیفیت فرآورده های پروتئینی تولیدی و
                         نیز حداکثر نمودن سودآوری مشتریان و بهبود پایداری تولید
                         در مزارع دام، طیور و آبزیان.
                     </Typography>
+                </div>
 
-                    <div className="home-about-img">
-                        <Image
-                            src="/images/about-infographic.webp"
-                            alt="درباره مبارک اندیش"
-                            width={1024}
-                            height={493}
-                        />
-                    </div>
+                <div className="intro-logos-wrapper">
+                    <Image
+                        src="/images/ocflock.png"
+                        alt="ocflock"
+                        width={125}
+                        height={65}
+                    />
+                    <Image
+                        src="/images/evolution-1.png"
+                        alt="evolution"
+                        width={125}
+                        height={65}
+                    />
+                    <Image
+                        src="/images/genex-2.png"
+                        alt="genex"
+                        width={125}
+                        height={65}
+                    />
+                    <Image
+                        src="/images/hendrix-genetix-1.png"
+                        alt="hendrix-genetix"
+                        width={125}
+                        height={65}
+                    />
+                    <Image
+                        src="/images/troutlodge-1.png"
+                        alt="troutlodge"
+                        width={125}
+                        height={65}
+                    />
+                    <Image
+                        src="/images/damgostar-pishgam.png"
+                        alt="damgostar-pishgam"
+                        width={125}
+                        height={65}
+                    />
                 </div>
             </Container>
         </div>
